@@ -1,0 +1,10 @@
+tags:
+  - Auth
+summary: Logout a user
+operationId: logoutUser
+description: 'Logout a user with this endpoint. The user will be logged out and their session will be invalidated.'
+responses:
+  '204':
+    description: Successfully logged out a user
+  '404':
+    $ref: '../../components/responses/404.yaml'
