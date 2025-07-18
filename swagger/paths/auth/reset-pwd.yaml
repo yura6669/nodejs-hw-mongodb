@@ -1,0 +1,44 @@
+tags:
+  - Auth
+summary: Reset Password
+operationId: resetPassword
+description: "Reset a user's password using this endpoint. The user must provide their email address to receive a reset link. After clicking the link, they can set a new password."
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - token
+          - password
+        properties:
+          token:
+            description: "Reset password token"
+            type: string
+            example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODVmZWY1MDdlYzA3ZTViYTc2YWIwMmMiLCJlbWFpbCI6InBla2VtMjUwOTNAYXhjcmFkaW8uY29tIiwiaWF0IjoxNzUxNzQyMjA4LCJleHAiOjE3NTE3NDMxMDh9.xN5QNegybL4QJ3hT7_v3i_03b5jrXLg0Vf8pzVTlT7k'
+          password:
+            description: "New password for the user"
+            type: string
+            example: 'newpassword123'
+responses:
+  '200':
+    description: Successfully reset the user's password
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Password has been successfully reset.
+            data:
+              type: object
+  '404':
+    $ref: '../../components/responses/404.yaml'
